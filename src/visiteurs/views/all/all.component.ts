@@ -28,10 +28,10 @@ export class AllComponent {
       display: (value) => value.prenom
     },{
       header: "Badge",
-      display: (value) => value.badge
+      display: (value) => value.badge.numero
     },{
       header: "Raison",
-      display: (value) => value.raison
+      display: (value) => value.raison.libelle
     },{
       header: "Arrivée",
       display: (value) => value.arrivee

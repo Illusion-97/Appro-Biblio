@@ -6,6 +6,7 @@ import {catchError, map, Observable, of, throwError} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {Raison} from "../../../raisons/models/raison";
+import {Badge} from "../../../badges/models/badge";
 import {AsyncPipe} from "@angular/common";
 
 @Component({
@@ -25,8 +26,7 @@ export class EditorComponent extends AbstractFormComponent {
       nonNullable: true}),
     prenom: new FormControl("", {validators: [Validators.required],
       nonNullable: true}),
-    badge: new FormControl("", {validators: [Validators.required],
-      nonNullable: true}),
+    badge: new FormControl({}, {validators: [Validators.required]}),
     raison: new FormControl({}, {validators: [Validators.required]}),
     arrivee: new FormControl(new Date().toLocaleString(), {
       validators: [Validators.required],
@@ -35,6 +35,7 @@ export class EditorComponent extends AbstractFormComponent {
     depart: new FormControl("", {nonNullable: true})
   });
   raisons: Observable<Raison[]> = inject(ActivatedRoute).data.pipe(map(({raisons}) => raisons))
+  badges: Observable<Badge[]> = inject(ActivatedRoute).data.pipe(map(({badges}) => badges))
 
   private http = inject(HttpClient)
   private router = inject(Router)

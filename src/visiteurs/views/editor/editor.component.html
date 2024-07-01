@@ -13,8 +13,8 @@
         <div class="w-6/12 px-1">
           <label for="badge" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Numéro de badge</label>
           <select id="badge" formControlName="badge" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            @for (raison of raisons | async; track $index) {
-              <option [ngValue]="raison">{{raison.libelle}}</option>
+            @for (badge of badges | async; track $index) {
+              <option [ngValue]="badge">{{badge.numero}}</option>
             }
           </select>
         </div>

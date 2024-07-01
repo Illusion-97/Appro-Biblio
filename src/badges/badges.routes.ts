@@ -8,26 +8,24 @@ export const routes: Routes = [
     path: "",
     loadComponent: () => import("./views/all/all.component").then(m => m.AllComponent),
     resolve: {
-      visiteurs: () => inject(HttpClient).get("/visiteurs")
+      badges: () => inject(HttpClient).get("/badges")
     }
   },
   {
     path: "editor/:id",
     loadComponent: () => import("./views/editor/editor.component").then(m => m.EditorComponent),
     resolve: {
-      visiteur: (route: ActivatedRouteSnapshot) => {
+      badge: (route: ActivatedRouteSnapshot) => {
         const id = +route.params['id']
         const router = inject(Router)
-        return id ? inject(HttpClient).get("/visiteurs/" + id)
+        return id ? inject(HttpClient).get("/badges/" + id)
             .pipe(catchError(() => {
               // on ne fait pas d'injection dans un subscribe ni un pipe
-              router.navigate(['/visiteurs/editor/0']).then(() => alert("Visiteur inexistant"))
+              router.navigate(['/badges/editor/0']).then(() => alert("Badge inexistant"))
               return of(undefined)
             }))
           : undefined
-      },
-      raisons: () => inject(HttpClient).get("/raisons"),
-      badges: () => inject(HttpClient).get("/badges")
+      }
     }
   }
 ]

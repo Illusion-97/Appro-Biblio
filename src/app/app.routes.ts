@@ -10,6 +10,10 @@ export const routes: Routes = [
     loadChildren: () => import("../visiteurs/visiteurs.routes").then(m => m.routes)
   },  
   {
+    path: "badges",
+    loadChildren: () => import("../badges/badges.routes").then(m => m.routes)
+  },    
+  {
     path: "**",
     loadComponent: () => import("./not-found/not-found.component").then(m => m.NotFoundComponent)
   }
