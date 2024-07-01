@@ -8,24 +8,37 @@
       <div class="mb-5">
         <label for="prenom" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prénom</label>
         <input formControlName="prenom" type="text" id="prenom" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
-      </div>     
-      <div class="mb-5">
-        <label for="badge" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Numéro de badge</label>
-        <input formControlName="badge" type="text" id="badge" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
-      </div>    
-      <div class="mb-5">
-        <label for="raison" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Raison de la visite</label>
-        <input formControlName="raison" type="text" id="raison" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
       </div>
-      <div class="mb-5">
-        <label for="arrivee" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date d'arrivée</label>
-        <input formControlName="arrivee" type="text" id="arrivee" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
-      </div>      
-      <div class="mb-5">
-        <label for="depart" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date de départ</label>
-        <input formControlName="depart" type="text" id="depart" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-      </div>                            
+      <div class="mb-5 flex">
+        <div class="w-6/12 px-1">
+          <label for="badge" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Numéro de badge</label>
+          <select id="badge" formControlName="badge" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            @for (raison of raisons | async; track $index) {
+              <option [ngValue]="raison">{{raison.libelle}}</option>
+            }
+          </select>
+        </div>
+        <div class="w-6/12 px-1">
+          <label for="raison" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Raison de la visite</label>
+          <select id="raison" formControlName="raison" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            @for (raison of raisons | async; track $index) {
+              <option [ngValue]="raison">{{raison.libelle}}</option>
+            }
+          </select>
+        </div>
+      </div>
+      @if (form.value.id) {
+        <div class="mb-5">
+          <label for="arrivee" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date d'arrivée</label>
+          <input formControlName="arrivee" type="text" id="arrivee" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+        </div>
+        <div class="mb-5">
+          <label for="depart" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date de départ</label>
+          <input formControlName="depart" type="text" id="depart" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+        </div>
+      }
       <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
     </form>
   </div>
 </div>
+{{jsonValue}}

@@ -25,7 +25,8 @@ export const routes: Routes = [
               return of(undefined)
             }))
           : undefined
-      }
+      },
+      raisons: () => inject(HttpClient).get("/raisons")
     }
   }
 ]

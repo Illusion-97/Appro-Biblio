@@ -2,29 +2,39 @@ import {Component, inject} from '@angular/core';
 import {AbstractFormComponent} from "../../../common/components/abstract-form-component";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
-import {catchError, map, of, throwError} from "rxjs";
+import {catchError, map, Observable, of, throwError} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
+import {Raison} from "../../../raisons/models/raison";
+import {AsyncPipe} from "@angular/common";
 
 @Component({
   selector: 'app-editor',
   standalone: true,
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AsyncPipe
   ],
   templateUrl: './editor.component.html',
   styleUrl: './editor.component.css'
 })
 export class EditorComponent extends AbstractFormComponent {
   form: FormGroup = new FormGroup<any>({
-    id: new FormControl(0),
-    nom: new FormControl("", {validators: [Validators.required]}),
-    prenom: new FormControl("", {validators: [Validators.required]}),
-    badge: new FormControl("", {validators: [Validators.required]}),
-    raison: new FormControl("", {validators: [Validators.required]}),
-    arrivee: new FormControl(new Date(), {validators: [Validators.required]}),
-    depart: new FormControl("")
+    id: new FormControl(0, {nonNullable: true}),
+    nom: new FormControl("", {validators: [Validators.required],
+      nonNullable: true}),
+    prenom: new FormControl("", {validators: [Validators.required],
+      nonNullable: true}),
+    badge: new FormControl("", {validators: [Validators.required],
+      nonNullable: true}),
+    raison: new FormControl({}, {validators: [Validators.required]}),
+    arrivee: new FormControl(new Date().toLocaleString(), {
+      validators: [Validators.required],
+      nonNullable: true
+    }),
+    depart: new FormControl("", {nonNullable: true})
   });
+  raisons: Observable<Raison[]> = inject(ActivatedRoute).data.pipe(map(({raisons}) => raisons))
 
   private http = inject(HttpClient)
   private router = inject(Router)
@@ -34,7 +44,6 @@ export class EditorComponent extends AbstractFormComponent {
     route.data
       .pipe(map(({visiteur}) => visiteur), takeUntilDestroyed())
       .subscribe(visiteur => {
-        console.log("visiteur ", visiteur)
         if(visiteur) this.form.patchValue(visiteur)
         else this.form.reset()
       })
