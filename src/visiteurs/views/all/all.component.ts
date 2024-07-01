@@ -26,19 +26,7 @@ export class AllComponent {
     },{
       header: "Prenom",
       display: (value) => value.prenom
-    },{
-      header: "Badge",
-      display: (value) => value.badge.numero
-    },{
-      header: "Raison",
-      display: (value) => value.raison.libelle
-    },{
-      header: "Arrivée",
-      display: (value) => value.arrivee
-    },{
-      header: "Départ",
-      display: (value) => value.depart
-    },
+    }
   ]
   actions: Action<Visiteur>[] = [
     {

@@ -47,47 +47,17 @@
     {
       "id": 1,
       "nom": "Chiavassa",
-      "prenom": "Jérôme",
-      "badge": {
-        "id": 5,
-        "numero": "3"
-      },
-      "raison": {
-        "id": 1,
-        "libelle": "Archives"
-      },
-      "arrivee": "01/07/2024 13:32:00",
-      "depart": ""
+      "prenom": "Jérôme"
     },
     {
       "id": 2,
       "nom": "Chiavassa",
-      "prenom": "Julien",
-      "badge": {
-        "id": 2,
-        "numero": "740"
-      },
-      "raison": {
-        "id": 1,
-        "libelle": "Archives"
-      },
-      "arrivee": "31/06/2024",
-      "depart": null
+      "prenom": "Julien"
     },
     {
       "id": 3,
       "nom": "Durand",
-      "prenom": "Jean",
-      "badge": {
-        "id": 3,
-        "numero": "1"
-      },
-      "raison": {
-        "id": 2,
-        "libelle": "Visiteur"
-      },
-      "arrivee": "12/06/2023",
-      "depart": "12/06/2023"
+      "prenom": "Jean"
     }
   ],
   "badges": [
@@ -114,6 +84,40 @@
     {
       "id": 6,
       "numero": "5"
+    }
+  ],
+  "entrees": [
+    {
+      "id": 1,
+      "visiteur": {
+        "id": 1,
+        "nom": "Chiavassa",
+        "prenom": "Jérôme"
+      },
+      "badge": {
+        "id": 1,
+        "numero": "123456"
+      },
+      "raison": {
+        "id": 1,
+        "libelle": "Archives"
+      },
+      "arrivee": "2024-07-01T13:55:49.661Z",
+      "sortie": null
+    },
+    {
+      "id": 2,
+      "visiteur": {
+        "id": 2
+      },
+      "badge": {
+        "id": 5
+      },
+      "raison": {
+        "id": 2
+      },
+      "arrivee": "2024-07-01T19:28",
+      "sortie": "2024-07-01T17:03"
     }
   ]
 }
