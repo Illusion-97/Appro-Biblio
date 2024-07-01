@@ -1,0 +1,58 @@
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <tr>
+      <th scope="col" class="px-6 py-3">
+        Nom
+      </th>
+      <th scope="col" class="px-6 py-3">
+        Prénom
+      </th>
+      <th scope="col" class="px-6 py-3">
+        Badge
+      </th>
+      <th scope="col" class="px-6 py-3">
+        Arrivée
+      </th>     
+      <th scope="col" class="px-6 py-3">
+        Départ
+      </th>   
+      <th scope="col" class="px-6 py-3">
+        Raison
+      </th>                            
+      <th scope="col" class="px-6 py-3 text-center">
+        Action
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    @for(visiteur of visiteurs; track $index){
+      <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+      <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        {{visiteur.nom}}
+      </td>
+      <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        {{visiteur.prenom}}
+      </td>
+      <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        {{visiteur.badge}}
+      </td>
+      <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        {{visiteur.arrivee}}
+      </td>
+      <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        {{visiteur.depart}}
+      </td>
+      <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        {{visiteur.raison}}
+      </td>                              
+      <td class="px-6 py-4">
+        <div class="flex justify-center">
+          <a routerLink="editor/{{visiteur.id}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+        </div>
+      </td>
+    </tr>
+    }
+    </tbody>
+  </table>
+</div>
