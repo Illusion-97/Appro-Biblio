@@ -1,10 +1,8 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Credentials} from "../views/login/login.component";
-import {User} from "../../common/models/user";
 import {BehaviorSubject, first, tap} from "rxjs";
 import {CanActivateFn, Router} from "@angular/router";
-import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -56,6 +54,12 @@ export class AuthService {
     localStorage.clear()
     this.router.navigate(['/home'])
   }
+}
+export interface User {
+  id: number;
+  username: string;
+  email: string;
+  password: string;
 }
 
 export interface AuthResponse {accessToken: string, user: User}

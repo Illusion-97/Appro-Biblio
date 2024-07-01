@@ -1,4 +1,3 @@
-import {User} from "../models/user";
 import {AbstractControl, FormGroup, ValidationErrors, ValidatorFn} from "@angular/forms";
 
 export abstract class AbstractFormComponent {
