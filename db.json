@@ -1,0 +1,47 @@
+{
+  "users": [
+    {
+      "email": "admin@dawan.fr",
+      "password": "$2a$10$.iQ8udlLGiXuMqgOzV8I0OtXQIxwmW9xE3gyFCbL5oHMnljHWZUM2",
+      "id": 1,
+      "username": "Yanis"
+    }
+  ],
+  "articles": [
+    {
+      "id": 1,
+      "titre": "New",
+      "href": "#",
+      "src": "pic07.jpg",
+      "alt": "Halte",
+      "text": "Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam."
+    },
+    {
+      "id": 2,
+      "titre": "un nouvel article",
+      "href": "#",
+      "src": "pic07.jpg",
+      "alt": "Halte",
+      "text": "Lorem"
+    },
+    {
+      "id": 3,
+      "titre": "TOUT EN MAJ",
+      "href": "#",
+      "src": "pic07.jpg",
+      "alt": "Halte",
+      "text": "Lorem"
+    }
+  ],
+  "raisons": [
+    {
+      "id": 1,
+      "libelle": "Archives"
+    },
+    {
+      "id": 2,
+      "libelle": "Visiteur"
+    }
+  ],
+  "visiteurs": []
+}
