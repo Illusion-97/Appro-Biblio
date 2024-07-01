@@ -1,0 +1,18 @@
+<form (submit)="login(myForm)" #myForm>
+  <label> Email : {{email}}
+    <input [class.invalid]="!mail.checkValidity()"
+           type="email" name="mail"
+           required
+           [(ngModel)]="email" #mail>
+  </label>
+  <label> Password : {{password}}
+    <input [class.invalid]="!pass.checkValidity()"
+           type="password" name="password"
+           required
+           minlength="6"
+           [(ngModel)]="password" #pass>
+  </label>
+  <input type="checkbox" id="remember" name="useLocal" [(ngModel)]="service.useLocal" ><label for="remember">Remember Me</label>
+  <input [disabled]="!myForm.checkValidity()" type="submit" value="Enregistrer">
+</form>
+{{jsonValue}}
