@@ -26,15 +26,10 @@ import {Visiteur} from "../../../visiteurs/models/visiteur";
 export class EditorComponent extends AbstractFormComponent {
   form: FormGroup = new FormGroup<any>({
     id: new FormControl(0, {nonNullable: true}),
-    visiteur: new FormGroup({
-      id: new FormControl(0)
-    }, {validators: [Validators.required]}),
-    badge: new FormGroup({
-      id: new FormControl(0)
-    }, {validators: [Validators.required]}),
-    raison: new FormGroup({
-      id: new FormControl(0)
-    }, {validators: [Validators.required]}),
+    visiteur: new FormControl(null, {validators: [Validators.required],
+      nonNullable: true}),
+    badge: new FormControl(null, {validators: [Validators.required]}),
+    raison: new FormControl(null, {validators: [Validators.required]}),
     arrivee: new FormControl(new Date(), {
       validators: [Validators.required],
       nonNullable: true
@@ -56,6 +51,10 @@ export class EditorComponent extends AbstractFormComponent {
         if(entree) this.form.patchValue(entree)
         else this.form.reset()
       })
+  }
+
+  comparator(o1: any, o2 : any) {
+    return o1 && o2 ? o1.id === o2.id : o1 === o2
   }
 
   onSubmit$(): void {

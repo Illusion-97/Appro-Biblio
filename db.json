@@ -102,22 +102,8 @@
         "id": 1,
         "libelle": "Archives"
       },
-      "arrivee": "2024-07-01T13:55:49.661Z",
+      "arrivee": "2024-07-01T15:23:02.734Z",
       "sortie": null
-    },
-    {
-      "id": 2,
-      "visiteur": {
-        "id": 2
-      },
-      "badge": {
-        "id": 5
-      },
-      "raison": {
-        "id": 2
-      },
-      "arrivee": "2024-07-01T19:28",
-      "sortie": "2024-07-01T17:03"
     }
   ]
 }

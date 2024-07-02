@@ -1,29 +1,28 @@
 <div class="h-full w-full flex justify-center items-center">
   <div class="block w-8/12 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
     <form class="w-full mx-auto" [formGroup]="form" (submit)="onSubmit()">
-      <div class="mb-5" formGroupName="visiteur">
+      <div class="mb-5">
         <label for="visiteur" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Visiteur</label>
-        <select id="visiteur" formControlName="id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-          <option [ngValue]="0">Selectionnez un visiteur</option>
+        <select [compareWith]="comparator" id="visiteur" formControlName="visiteur" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
           @for (visiteur of visiteurs | async; track $index) {
-            <option [selected]="form.value?.visiteur.id === visiteur.id" [ngValue]="visiteur.id">{{visiteur.nom | uppercase}} {{visiteur.prenom | titlecase}}</option>
+            <option [ngValue]="visiteur">{{visiteur.nom | uppercase}} {{visiteur.prenom | titlecase}}</option>
           }
         </select>
       </div>
       <div class="mb-5 flex">
-        <div class="w-6/12 px-1" formGroupName="badge">
+        <div class="w-6/12 px-1">
           <label for="badge" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Numéro de badge</label>
-          <select id="badge" formControlName="id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <select [compareWith]="comparator" id="badge" formControlName="badge" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             @for (badge of badges | async; track $index) {
-              <option [selected]="form.value?.badge.id === badge.id" [ngValue]="badge.id">{{badge.numero}}</option>
+              <option [ngValue]="badge">{{badge.numero}}</option>
             }
           </select>
         </div>
-        <div class="w-6/12 px-1" formGroupName="raison">
+        <div class="w-6/12 px-1">
           <label for="raison" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Raison de la visite</label>
-          <select id="raison" formControlName="id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <select [compareWith]="comparator" id="raison" formControlName="raison" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             @for (raison of raisons | async; track $index) {
-              <option [selected]="form.value?.raison.id === raison.id" [ngValue]="raison.id">{{raison.libelle}}</option>
+              <option [ngValue]="raison">{{raison.libelle}}</option>
             }
           </select>
         </div>
@@ -41,5 +40,4 @@
       <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
     </form>
   </div>
-  {{jsonValue}}
 </div>
