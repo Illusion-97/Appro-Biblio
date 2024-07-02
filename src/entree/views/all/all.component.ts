@@ -93,7 +93,10 @@ export class AllComponent {
   }
 
   constructor(route: ActivatedRoute) {
-    this.entrees = route.data.pipe(map(({entrees}) => entrees))
+    this.entrees = route.data.pipe(map(({entrees}) => {
+      this.total = entrees.total
+      return entrees.body
+    }))
     route.queryParams.pipe(takeUntilDestroyed(), map(({sortie}) => sortie)).subscribe(sortie => {
       this.sortie = sortie ? JSON.parse(sortie) : undefined
       this.getFiltered()

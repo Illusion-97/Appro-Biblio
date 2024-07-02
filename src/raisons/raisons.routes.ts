@@ -1,14 +1,20 @@
 import {ActivatedRouteSnapshot, Router, Routes} from "@angular/router";
 import {inject} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {catchError, of} from "rxjs";
+import {catchError, map, of} from "rxjs";
 
 export const routes: Routes = [
   {
     path: "",
     loadComponent: () => import("./views/all/all.component").then(m => m.AllComponent),
     resolve: {
-      raisons: () => inject(HttpClient).get("/raisons")
+      raisons: () => inject(HttpClient).get("/raisons?_limit=2", {observe: "response"})
+        .pipe(map(response => {
+          return {
+            total: +response.headers.get('X-Total-Count')!,
+            body: response.body!
+          }
+        }))
     }
   },
   {
