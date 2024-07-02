@@ -17,7 +17,7 @@ import {Entree} from "../../models/entree";
   styleUrl: './all.component.css'
 })
 export class AllComponent {
-  visiteurs: Observable<Entree[]> = inject(ActivatedRoute).data.pipe(map(({visiteurs}) => visiteurs))
+  entrees: Observable<Entree[]> = inject(ActivatedRoute).data.pipe(map(({entrees}) => entrees))
   displayers: Displayer<Entree>[] = [
     {
       header: "Visiteur",
