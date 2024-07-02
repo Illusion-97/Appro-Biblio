@@ -3,7 +3,7 @@ import {AbstractFormComponent} from "../../../common/components/abstract-form-co
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {catchError, map, Observable, of, throwError} from "rxjs";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router, RouterLink, RouterState} from "@angular/router";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {Raison} from "../../../raisons/models/raison";
 import {Badge} from "../../../badges/models/badge";
@@ -18,7 +18,8 @@ import {Visiteur} from "../../../visiteurs/models/visiteur";
     ReactiveFormsModule,
     AsyncPipe,
     UpperCasePipe,
-    TitleCasePipe
+    TitleCasePipe,
+    RouterLink
   ],
   templateUrl: './editor.component.html',
   styleUrl: './editor.component.css'
@@ -51,6 +52,13 @@ export class EditorComponent extends AbstractFormComponent {
         if(entree) this.form.patchValue(entree)
         else this.form.reset()
       })
+    const state = this.router.getCurrentNavigation()?.extras.state
+    if(state) {
+      const visiteur = state['visiteur']
+      if (visiteur) this.form.patchValue({
+        visiteur: visiteur
+      })
+    }
   }
 
   comparator(o1: any, o2 : any) {

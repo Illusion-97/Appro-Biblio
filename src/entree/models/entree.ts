@@ -4,9 +4,9 @@ import {Badge} from "../../badges/models/badge";
 
 export interface Entree {
   id: number
-  visiteur: Visiteur
+  visiteur?: Visiteur
   badge: Badge
   arrivee: Date
-  sortie: Date
+  sortie?: Date
   raison: Raison
 }

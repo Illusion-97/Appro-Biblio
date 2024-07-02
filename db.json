@@ -58,6 +58,21 @@
       "id": 3,
       "nom": "Durand",
       "prenom": "Jean"
+    },
+    {
+      "id": 4,
+      "nom": "ADEKALOM",
+      "prenom": "Yanis"
+    },
+    {
+      "id": 5,
+      "nom": "ADEKALOM",
+      "prenom": "Jéremy"
+    },
+    {
+      "id": 6,
+      "nom": "ADEKALOM",
+      "prenom": "Patrick"
     }
   ],
   "badges": [
@@ -107,11 +122,6 @@
     },
     {
       "id": 2,
-      "visiteur": {
-        "id": 3,
-        "nom": "Durand",
-        "prenom": "Jean"
-      },
       "badge": {
         "id": 4,
         "numero": "2"
@@ -121,6 +131,37 @@
         "libelle": "Visiteur"
       },
       "arrivee": "2024-07-02T07:09:30.092Z",
+      "sortie": "2024-07-02T08:21:29.145Z"
+    },
+    {
+      "id": 3,
+      "badge": {
+        "id": 2,
+        "numero": "740"
+      },
+      "raison": {
+        "id": 2,
+        "libelle": "Visiteur"
+      },
+      "arrivee": "2024-07-02T07:44:24.930Z",
+      "sortie": "2024-07-02T08:17:05.425Z"
+    },
+    {
+      "id": 4,
+      "visiteur": {
+        "id": 6,
+        "nom": "ADEKALOM",
+        "prenom": "Patrick"
+      },
+      "badge": {
+        "id": 2,
+        "numero": "740"
+      },
+      "raison": {
+        "id": 1,
+        "libelle": "Archives"
+      },
+      "arrivee": "2024-07-02T07:57:23.030Z",
       "sortie": null
     }
   ]

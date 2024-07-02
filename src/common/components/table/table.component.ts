@@ -30,5 +30,7 @@ export interface Displayer<T> {
 }
 export interface Action<T> {
   name: string
-  link: (value: T) => string | any[]
+  show?: (value: T) => boolean
+  link?: (value: T) => string | any[]
+  method?: (value: T) => void
 }

@@ -8,6 +8,7 @@
             <option [ngValue]="visiteur">{{visiteur.nom | uppercase}} {{visiteur.prenom | titlecase}}</option>
           }
         </select>
+        <a routerLink="/visiteurs/editor/0" [queryParams]="{entry: true}" >Ajouter un Visiteur</a>
       </div>
       <div class="mb-5 flex">
         <div class="w-6/12 px-1">

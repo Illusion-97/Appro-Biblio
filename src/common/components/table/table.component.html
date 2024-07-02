@@ -26,7 +26,13 @@
             <td class="px-6 py-4">
               <div class="flex justify-center gap-3">
                 @for (action of actions; track $index) {
-                  <a [routerLink]="action.link(data)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{action.name}}</a>
+                  @if(!action.show || action.show(data)) {
+                    @if (action.method) {
+                      <button (click)="action.method(data)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{action.name}}</button>
+                    } @else if(action.link) {
+                      <a [routerLink]="action.link(data)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{action.name}}</a>
+                    }
+                  }
                 }
               </div>
             </td>
