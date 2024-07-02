@@ -8,6 +8,7 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {PaginationComponent} from "../../../common/components/pagination/pagination.component";
+import {getPage, Page} from "../../../common/tools/http.tools";
 
 @Component({
   selector: 'app-all',
@@ -24,7 +25,7 @@ import {PaginationComponent} from "../../../common/components/pagination/paginat
 })
 export class AllComponent {
   private http: HttpClient = inject(HttpClient)
-  entrees: Observable<Entree[]>;
+  entrees: Observable<Page<Entree>>;
   private datePipe = new DatePipe("en-US")
   displayers: Displayer<Entree>[] = [
     {
@@ -58,7 +59,7 @@ export class AllComponent {
         value.sortie = new Date()
         value.visiteur = undefined
         this.http.put("/entrees/"+value.id, value).pipe(first())
-          .subscribe(() => this.entrees = this.http.get<Entree[]>("/entrees"))
+          .subscribe(() => this.entrees = getPage(this.http, "/entrees"))
       }
     }
   ]
@@ -83,26 +84,20 @@ export class AllComponent {
     let params = new HttpParams().append('_limit', this.limit).append('_start', this.start)
     if(this.visiteur) params = params.append("visiteur.nom_like", this.visiteur)
     if(this.badge) params = params.append("badge.numero_like", this.badge)
-    const observable = this.http.get<Entree[]>("/entrees", {params: params, observe: "response"})
-      .pipe(map(response => {
-        this.total = +response.headers.get('X-Total-Count')!
-        return response.body!
-      }))
+    const observable = getPage<Entree>(this.http, "/entrees", params)
     this.entrees = this.sortie === undefined ? observable
-    : observable.pipe(map(results => results.filter(result => this.sortie ? !!result.sortie : !result.sortie)))
+    : observable.pipe(map(results => {
+        results.body = results.body.filter(result => this.sortie ? !!result.sortie : !result.sortie)
+        return results
+      }))
   }
 
   constructor(route: ActivatedRoute) {
-    this.entrees = route.data.pipe(map(({entrees}) => {
-      this.total = entrees.total
-      return entrees.body
-    }))
+    this.entrees = route.data.pipe(map(({entrees}) => entrees))
     route.queryParams.pipe(takeUntilDestroyed(), map(({sortie}) => sortie)).subscribe(sortie => {
       this.sortie = sortie ? JSON.parse(sortie) : undefined
       this.getFiltered()
     })
   }
-
-
 }
 

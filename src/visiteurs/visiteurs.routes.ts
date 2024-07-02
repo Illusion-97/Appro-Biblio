@@ -1,14 +1,15 @@
 import {ActivatedRouteSnapshot, Router, Routes} from "@angular/router";
 import {inject} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {catchError, of} from "rxjs";
+import {catchError, map, of} from "rxjs";
+import {getPage} from "../common/tools/http.tools";
 
 export const routes: Routes = [
   {
     path: "",
     loadComponent: () => import("./views/all/all.component").then(m => m.AllComponent),
     resolve: {
-      visiteurs: () => inject(HttpClient).get("/visiteurs")
+      visiteurs: () => getPage(inject(HttpClient), "/visiteurs")
     }
   },
   {

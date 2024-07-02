@@ -18,7 +18,9 @@
         </select>
       </div>
     </div>
-    <app-table [datas]="(entrees | async) ?? []" [displayers]="displayers" [actions]="actions"/>
-    <app-pagination [limit]="limit" [total]="total" [(start)]="page"/>
+    @if(entrees | async; as result){
+      <app-table [datas]="result.body" [displayers]="displayers" [actions]="actions"/>
+      <app-pagination [limit]="limit" [total]="result.total" [(start)]="page"/>
+    }
   </div>
 </div>
