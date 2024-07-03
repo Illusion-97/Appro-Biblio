@@ -50,7 +50,7 @@ export class AuthService {
     this.currentResponse.next(null)
     sessionStorage.clear()
     localStorage.clear()
-    this.router.navigate(['/home'])
+    this.router.navigate(['/'])
   }
 }
 

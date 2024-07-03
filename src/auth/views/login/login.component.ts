@@ -37,7 +37,7 @@ export class LoginComponent {
   login(form: HTMLFormElement) {
     if (form.checkValidity())
       this.service.login(this.credentials).subscribe(response => {
-        this.router.navigate(['/home'])
+        this.router.navigate(['/'])
       })
   }
 }

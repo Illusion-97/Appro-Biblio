@@ -5,6 +5,12 @@
       "password": "$2a$10$.iQ8udlLGiXuMqgOzV8I0OtXQIxwmW9xE3gyFCbL5oHMnljHWZUM2",
       "id": 1,
       "username": "Yanis"
+    },
+    {
+      "email": "yadekalom@jehann.fr",
+      "password": "$2a$10$hf.V3T7acB4DgRgRYQRW7.bCKesejGnB1HXvaNezHnTWiu8/ig4ia",
+      "id": 2,
+      "username": "ADEKALOM Yanis"
     }
   ],
   "articles": [
