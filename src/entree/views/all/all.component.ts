@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {first, map, Observable} from "rxjs";
+import {first, map, Observable, tap} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {AsyncPipe, DatePipe} from "@angular/common";
 import {Action, Displayer, TableComponent} from "../../../common/components/table/table.component";
@@ -91,10 +91,9 @@ export class AllComponent {
     let params = new HttpParams().append('_limit', this.limit).append('_start', this.start)
     if (this.visiteur) params = params.append("visiteur.nom_like", this.visiteur)
     if (this.badge) params = params.append("badge.numero_like", this.badge)
-    const observable = getPage<Entree>(this.http, "/entrees", params)
-    this.entrees = this.sortie === undefined ? observable
-      : observable.pipe(map(results => {
-        results.body = results.body.filter(result => this.sortie ? !!result.sortie : !result.sortie)
+    this.entrees = getPage<Entree>(this.http, "/entrees", params).pipe(map(results => {
+        if(this.sortie !== undefined)
+          results.body = results.body.filter(result => this.sortie ? !!result.sortie : !result.sortie)
         return results
       }))
   }
