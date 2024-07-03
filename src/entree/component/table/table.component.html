@@ -2,28 +2,28 @@
   <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
     <tr>
-      <th scope="col" class="px-6 py-3">
+      <th class="px-6 py-3" scope="col">
         Visiteur
       </th>
-      <th scope="col" class="px-6 py-3">
+      <th class="px-6 py-3" scope="col">
         Badge
       </th>
-      <th scope="col" class="px-6 py-3">
+      <th class="px-6 py-3" scope="col">
         Raison
       </th>
-      <th scope="col" class="px-6 py-3">
+      <th class="px-6 py-3" scope="col">
         Entree
       </th>
-      <th scope="col" class="px-6 py-3">
+      <th class="px-6 py-3" scope="col">
         Sortie
       </th>
-        <th scope="col" class="px-6 py-3 text-center">
-          Action
-        </th>
+      <th class="px-6 py-3 text-center" scope="col">
+        Action
+      </th>
     </tr>
     </thead>
     <tbody>
-      @for(entree of entrees; track $index){
+      @for (entree of entrees; track $index) {
         <app-row [entree]="entree"></app-row>
       }
     </tbody>

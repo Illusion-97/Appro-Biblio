@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { RowComponent } from './row.component';
+import {RowComponent} from './row.component';
 
 describe('RowComponent', () => {
   let component: RowComponent;
@@ -10,7 +10,7 @@ describe('RowComponent', () => {
     await TestBed.configureTestingModule({
       imports: [RowComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(RowComponent);
     component = fixture.componentInstance;

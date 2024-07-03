@@ -4,15 +4,16 @@ export abstract class AbstractFormComponent {
 
   abstract form: FormGroup
 
-  onSubmit() {
-    this.form.markAllAsTouched()
-    if(this.form.valid) this.onSubmit$()
-  }
-
-  abstract onSubmit$(): void
   get jsonValue() {
     return JSON.stringify(this.form.value)
   }
+
+  onSubmit() {
+    this.form.markAllAsTouched()
+    if (this.form.valid) this.onSubmit$()
+  }
+
+  abstract onSubmit$(): void
 
   getControl(control: AbstractControl | string) {
     if (typeof control == "string") {
@@ -38,8 +39,8 @@ export abstract class AbstractFormComponent {
       return control.value === matchingControl.value
         ? null
         : { // Objet de type ValidationErrors
-        mustmatch: "Ne match pas" // errorCode : value
-      }
+          mustmatch: "Ne match pas" // errorCode : value
+        }
     }
   }
 

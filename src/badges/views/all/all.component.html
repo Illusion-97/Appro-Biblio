@@ -1,6 +1,6 @@
 <div class="h-full w-full flex">
   <div class="grow min-w-0 px-3 flex flex-col justify-center">
-    <app-table [datas]="(badges | async) ?? []" [displayers]="displayers" [actions]="actions"/>
-    <app-pagination [total]="total" [limit]="limit" [(start)]="page"/>
+    <app-table [actions]="actions" [datas]="(badges | async) ?? []" [displayers]="displayers"/>
+    <app-pagination [(start)]="page" [limit]="limit" [total]="total"/>
   </div>
 </div>

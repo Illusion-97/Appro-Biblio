@@ -1,9 +1,8 @@
 import {map, Observable} from "rxjs";
-import {inject} from "@angular/core";
 import {HttpClient, HttpParams} from "@angular/common/http";
 
 export function getPage<T>(http: HttpClient, url: string, params?: HttpParams): Observable<Page<T>> {
-  if(!params) params = new HttpParams().append('_limit', 2)
+  if (!params) params = new HttpParams().append('_limit', 2)
   return http.get<T[]>(url, {observe: "response", params: params})
     .pipe(map(response => {
       return {

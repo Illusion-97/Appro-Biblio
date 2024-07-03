@@ -1,37 +1,37 @@
-<form [formGroup]="form" (submit)="onSubmit()">
+<form (submit)="onSubmit()" [formGroup]="form">
   <label> Username :
-    <input [class.invalid]="isInvalid('username')" type="text" formControlName="username">
-    @if(isInvalid('username')) {
+    <input [class.invalid]="isInvalid('username')" formControlName="username" type="text">
+    @if (isInvalid('username')) {
       <p>Username is required</p>
     }
   </label>
   <label> Email :
-    <input [class.invalid]="isInvalid('email')" type="email" formControlName="email">
-    @if(hasError('email','required')) {
+    <input [class.invalid]="isInvalid('email')" formControlName="email" type="email">
+    @if (hasError('email', 'required')) {
       <p>Email is required</p>
-    } @else if (hasError('email','email')) {
+    } @else if (hasError('email', 'email')) {
       <p>Wrong format</p>
     }
   </label>
   <label> Password :
-    <input [class.invalid]="isInvalid('password')" type="password" formControlName="password">
-    @if(hasError("password","required")) {
+    <input [class.invalid]="isInvalid('password')" formControlName="password" type="password">
+    @if (hasError("password", "required")) {
       <p>Password is required</p>
-    } @else if (hasError("password","minlength")) {
+    } @else if (hasError("password", "minlength")) {
       <p>Password too short</p>
     }
   </label>
   <label> Confirm Password :
-    <input [class.invalid]="isInvalid(confirmPassword)" type="password" [formControl]="confirmPassword">
-    @if(hasError(confirmPassword,"required")) {
+    <input [class.invalid]="isInvalid(confirmPassword)" [formControl]="confirmPassword" type="password">
+    @if (hasError(confirmPassword, "required")) {
       <p>Confirm Password is required</p>
-    } @else if (hasError(confirmPassword,"mustmatch")) {
+    } @else if (hasError(confirmPassword, "mustmatch")) {
       <p>Passwords not matching</p>
     }
-    Pristine : {{confirmPassword.pristine}} <br>
-    Touched : {{confirmPassword.touched}} <br>
-    Dirty : {{confirmPassword.dirty}}
+    Pristine : {{ confirmPassword.pristine }} <br>
+    Touched : {{ confirmPassword.touched }} <br>
+    Dirty : {{ confirmPassword.dirty }}
   </label>
   <input type="submit" value="Enregistrer">
 </form>
-{{jsonValue}}
+{{ jsonValue }}

@@ -2,23 +2,28 @@
   <div class="grow min-w-0 px-3 flex flex-col justify-center">
     <div class="w-full flex justify-between pb-5 px-10">
       <div>
-        <label for="visiteur" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Visiteur</label>
-        <input [(ngModel)]="visiteur" (ngModelChange)="getFiltered()" type="text" id="visiteur" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required />
+        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="visiteur">Visiteur</label>
+        <input (ngModelChange)="getFiltered()" [(ngModel)]="visiteur" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="visiteur"
+               placeholder="John"
+               required type="text"/>
       </div>
       <div>
-        <label for="badge" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Badge</label>
-        <input [(ngModel)]="badge"  (ngModelChange)="getFiltered()" type="text" id="badge" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required />
+        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="badge">Badge</label>
+        <input (ngModelChange)="getFiltered()" [(ngModel)]="badge" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="badge"
+               placeholder="John"
+               required type="text"/>
       </div>
       <div>
-        <label for="sortie" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sortie</label>
-        <select [(ngModel)]="sortie"  (ngModelChange)="getFiltered()" id="sortie" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="sortie">Sortie</label>
+        <select (ngModelChange)="getFiltered()" [(ngModel)]="sortie" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                id="sortie">
           <option [ngValue]="undefined">Tous</option>
           <option [ngValue]="false">En utilisation</option>
           <option [ngValue]="true">Rendus</option>
         </select>
       </div>
     </div>
-    @if(entrees | async; as result){
+    @if (entrees | async; as result) {
       <app-table [datas]="result.body" [displayers]="displayers" [actions]="actions"/>
       <app-pagination [limit]="limit" [total]="result.total" [(start)]="page"/>
     }

@@ -24,33 +24,18 @@ import {getPage, Page} from "../../../common/tools/http.tools";
   styleUrl: './all.component.css'
 })
 export class AllComponent {
-  private http: HttpClient = inject(HttpClient)
   entrees: Observable<Page<Entree>>;
-  private datePipe = new DatePipe("en-US")
-  displayers: Displayer<Entree>[] = [
-    {
-      header: "Visiteur",
-      display: (value) => value.visiteur
-        ? `${value.visiteur.nom.toUpperCase()} ${value.visiteur.prenom}`
-        : "Visiteur Anonyme"
-    },{
-      header: "Badge",
-      display: (value) => value.badge.numero
-    },{
-      header: "Raison",
-      display: (value) => value.raison.libelle
-    },{
-      header: "Arrivée",
-      display: (value) => this.datePipe.transform(value.arrivee, "short")
-    },{
-      header: "Départ",
-      display: (value) => this.datePipe.transform(value.sortie, "short")
-    },
-  ]
+  visiteur: string = ""
+  badge: string = ""
+  sortie?: boolean
+  limit: number = 2
+  start: number = 0
+  total: number = 0
+  private http: HttpClient = inject(HttpClient)
   actions: Action<Entree>[] = [
     {
       name: "Edit",
-      link: value => 'editor/'+value.id
+      link: value => 'editor/' + value.id
     },
     {
       name: "Rendre le badge",
@@ -58,18 +43,40 @@ export class AllComponent {
       method: value => {
         value.sortie = new Date()
         value.visiteur = undefined
-        this.http.put("/entrees/"+value.id, value).pipe(first())
+        this.http.put("/entrees/" + value.id, value).pipe(first())
           .subscribe(() => this.entrees = getPage(this.http, "/entrees"))
       }
     }
   ]
+  private datePipe = new DatePipe("en-US")
+  displayers: Displayer<Entree>[] = [
+    {
+      header: "Visiteur",
+      display: (value) => value.visiteur
+        ? `${value.visiteur.nom.toUpperCase()} ${value.visiteur.prenom}`
+        : "Visiteur Anonyme"
+    }, {
+      header: "Badge",
+      display: (value) => value.badge.numero
+    }, {
+      header: "Raison",
+      display: (value) => value.raison.libelle
+    }, {
+      header: "Arrivée",
+      display: (value) => this.datePipe.transform(value.arrivee, "short")
+    }, {
+      header: "Départ",
+      display: (value) => this.datePipe.transform(value.sortie, "short")
+    },
+  ]
 
-  visiteur: string = ""
-  badge: string = ""
-  sortie?: boolean
-  limit: number = 2
-  start: number = 0
-  total: number = 0
+  constructor(route: ActivatedRoute) {
+    this.entrees = route.data.pipe(map(({entrees}) => entrees))
+    route.queryParams.pipe(takeUntilDestroyed(), map(({sortie}) => sortie)).subscribe(sortie => {
+      this.sortie = sortie ? JSON.parse(sortie) : undefined
+      this.getFiltered()
+    })
+  }
 
   get page() {
     return this.start
@@ -82,22 +89,14 @@ export class AllComponent {
 
   getFiltered() {
     let params = new HttpParams().append('_limit', this.limit).append('_start', this.start)
-    if(this.visiteur) params = params.append("visiteur.nom_like", this.visiteur)
-    if(this.badge) params = params.append("badge.numero_like", this.badge)
+    if (this.visiteur) params = params.append("visiteur.nom_like", this.visiteur)
+    if (this.badge) params = params.append("badge.numero_like", this.badge)
     const observable = getPage<Entree>(this.http, "/entrees", params)
     this.entrees = this.sortie === undefined ? observable
-    : observable.pipe(map(results => {
+      : observable.pipe(map(results => {
         results.body = results.body.filter(result => this.sortie ? !!result.sortie : !result.sortie)
         return results
       }))
-  }
-
-  constructor(route: ActivatedRoute) {
-    this.entrees = route.data.pipe(map(({entrees}) => entrees))
-    route.queryParams.pipe(takeUntilDestroyed(), map(({sortie}) => sortie)).subscribe(sortie => {
-      this.sortie = sortie ? JSON.parse(sortie) : undefined
-      this.getFiltered()
-    })
   }
 }
 

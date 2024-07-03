@@ -2,13 +2,12 @@ import {Component, inject} from '@angular/core';
 import {AbstractFormComponent} from "../../../common/components/abstract-form-component";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
-import {catchError, map, Observable, of, throwError} from "rxjs";
-import {ActivatedRoute, Router, RouterLink, RouterState} from "@angular/router";
+import {catchError, map, Observable, throwError} from "rxjs";
+import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {Raison} from "../../../raisons/models/raison";
 import {Badge} from "../../../badges/models/badge";
 import {AsyncPipe, TitleCasePipe, UpperCasePipe} from "@angular/common";
-import {Entree} from "../../models/entree";
 import {Visiteur} from "../../../visiteurs/models/visiteur";
 
 @Component({
@@ -27,8 +26,10 @@ import {Visiteur} from "../../../visiteurs/models/visiteur";
 export class EditorComponent extends AbstractFormComponent {
   form: FormGroup = new FormGroup<any>({
     id: new FormControl(0, {nonNullable: true}),
-    visiteur: new FormControl(null, {validators: [Validators.required],
-      nonNullable: true}),
+    visiteur: new FormControl(null, {
+      validators: [Validators.required],
+      nonNullable: true
+    }),
     badge: new FormControl(null, {validators: [Validators.required]}),
     raison: new FormControl(null, {validators: [Validators.required]}),
     arrivee: new FormControl(new Date(), {
@@ -49,11 +50,11 @@ export class EditorComponent extends AbstractFormComponent {
     route.data
       .pipe(map(({entree}) => entree), takeUntilDestroyed())
       .subscribe(entree => {
-        if(entree) this.form.patchValue(entree)
+        if (entree) this.form.patchValue(entree)
         else this.form.reset()
       })
     const state = this.router.getCurrentNavigation()?.extras.state
-    if(state) {
+    if (state) {
       const visiteur = state['visiteur']
       if (visiteur) this.form.patchValue({
         visiteur: visiteur
@@ -61,16 +62,16 @@ export class EditorComponent extends AbstractFormComponent {
     }
   }
 
-  comparator(o1: any, o2 : any) {
+  comparator(o1: any, o2: any) {
     return o1 && o2 ? o1.id === o2.id : o1 === o2
   }
 
   onSubmit$(): void {
     const id = this.form.value.id;
     (id
-      ? this.http.put("/entrees/"+id, this.form.value)
+      ? this.http.put("/entrees/" + id, this.form.value)
       : this.http.post("/entrees", this.form.value))
-      .pipe(catchError( err => {
+      .pipe(catchError(err => {
         console.log(err)
         // return of(undefined) on peut retourner une valeur utilisable dans le next et éviter une gestion d'erreur supplémentaire
         return throwError(() => err)

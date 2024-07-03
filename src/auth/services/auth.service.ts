@@ -9,9 +9,16 @@ import {CanActivateFn, Router} from "@angular/router";
 })
 export class AuthService {
 
+  useLocal: boolean = false
   private http: HttpClient = inject(HttpClient)
   //Un BehaviorSubject est un type d'Observable contenant une valeur initiale (ou la dernière valeur émise)
   private currentResponse: BehaviorSubject<AuthResponse | null> = new BehaviorSubject<AuthResponse | null>(null)
+  private router: Router = inject(Router)
+
+  constructor() {
+    const auth = sessionStorage.getItem("AUTH") ?? localStorage.getItem("AUTH")
+    if (auth) this.currentResponse.next(JSON.parse(auth))
+  }
 
   get isLogged(): boolean {
     return !!this.currentResponse.value
@@ -25,16 +32,9 @@ export class AuthService {
     return this.currentResponse.value?.accessToken
   }
 
-  useLocal: boolean = false
-
-  constructor() {
-    const auth = sessionStorage.getItem("AUTH") ?? localStorage.getItem("AUTH")
-    if(auth) this.currentResponse.next(JSON.parse(auth))
-  }
-
   //POST http://localhost:3000/login
   login(credentials: Credentials) {
-    return this.http.post<AuthResponse>(`/login`,credentials)
+    return this.http.post<AuthResponse>(`/login`, credentials)
       .pipe(first(), tap(response => {
         this.currentResponse.next(response);
         (this.useLocal ? localStorage : sessionStorage).setItem("AUTH", JSON.stringify(response))
@@ -43,10 +43,8 @@ export class AuthService {
 
   //POST http://localhost:3000/register
   register(user: User) {
-    return this.http.post<AuthResponse>(`/register`,user)
+    return this.http.post<AuthResponse>(`/register`, user)
   }
-
-  private router: Router = inject(Router)
 
   logout() {
     this.currentResponse.next(null)
@@ -55,6 +53,7 @@ export class AuthService {
     this.router.navigate(['/home'])
   }
 }
+
 export interface User {
   id: number;
   username: string;
@@ -62,8 +61,13 @@ export interface User {
   password: string;
 }
 
-export interface AuthResponse {accessToken: string, user: User}
+export interface AuthResponse {
+  accessToken: string,
+  user: User
+}
 
-export const authGuard : CanActivateFn = route =>
-  inject(AuthService).isLogged ||
-  inject(Router).createUrlTree(['/auth/login'])
+export const authGuard: CanActivateFn = route => {
+  return inject(Router).getCurrentNavigation()?.extras.state?.['bypass'] ||
+    inject(AuthService).isLogged ||
+    inject(Router).createUrlTree(['/'])
+}

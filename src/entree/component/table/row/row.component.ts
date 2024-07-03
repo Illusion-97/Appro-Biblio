@@ -25,10 +25,11 @@ export class RowComponent implements OnInit {
   raison?: Raison
 
   private http = inject(HttpClient)
+
   ngOnInit() {
-    forkJoin([this.http.get<Visiteur>("/visiteurs/"+this.entree.visiteur.id).pipe(first()),
-    this.http.get<Badge>("/badges/"+this.entree.badge.id).pipe(first()),
-    this.http.get<Raison>("/raisons/"+this.entree.raison.id).pipe(first())])
+    forkJoin([this.http.get<Visiteur>("/visiteurs/" + this.entree.visiteur.id).pipe(first()),
+      this.http.get<Badge>("/badges/" + this.entree.badge.id).pipe(first()),
+      this.http.get<Raison>("/raisons/" + this.entree.raison.id).pipe(first())])
       .subscribe(results => {
         this.visiteur = results[0]
         this.badge = results[1]

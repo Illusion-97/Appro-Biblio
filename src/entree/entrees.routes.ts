@@ -1,17 +1,10 @@
 import {ActivatedRouteSnapshot, Router, Routes} from "@angular/router";
 import {inject} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {catchError, map, of} from "rxjs";
+import {catchError, of} from "rxjs";
 import {getPage} from "../common/tools/http.tools";
 
 export const routes: Routes = [
-  {
-    path: "",
-    loadComponent: () => import("./views/all/all.component").then(m => m.AllComponent),
-    resolve: {
-      entrees: () => getPage(inject(HttpClient), "/entrees")
-    }
-  },
   {
     path: "editor/:id",
     loadComponent: () => import("./views/editor/editor.component").then(m => m.EditorComponent),
@@ -30,6 +23,13 @@ export const routes: Routes = [
       raisons: () => inject(HttpClient).get("/raisons"),
       badges: () => inject(HttpClient).get("/badges"),
       visiteurs: () => inject(HttpClient).get("/visiteurs")
+    }
+  },
+  {
+    path: "",
+    loadComponent: () => import("./views/all/all.component").then(m => m.AllComponent),
+    resolve: {
+      entrees: () => getPage(inject(HttpClient), "/entrees")
     }
   }
 ]

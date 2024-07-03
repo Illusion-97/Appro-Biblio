@@ -4,9 +4,7 @@ import {Visiteur} from "../../models/visiteur";
 import {ActivatedRoute} from "@angular/router";
 import {AsyncPipe} from "@angular/common";
 import {Action, Displayer, TableComponent} from "../../../common/components/table/table.component";
-import {Raison} from "../../../raisons/models/raison";
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {Badge} from "../../../badges/models/badge";
 import {PaginationComponent} from "../../../common/components/pagination/pagination.component";
 import {getPage, Page} from "../../../common/tools/http.tools";
 
@@ -28,7 +26,7 @@ export class AllComponent {
     {
       header: "Nom",
       display: (value) => value.nom
-    },{
+    }, {
       header: "Prenom",
       display: (value) => value.prenom
     }
@@ -36,12 +34,12 @@ export class AllComponent {
   actions: Action<Visiteur>[] = [
     {
       name: "Edit",
-      link: value => 'editor/'+value.id
+      link: value => 'editor/' + value.id
     }
   ]
-  private http: HttpClient = inject(HttpClient)
   limit: number = 2
   start: number = 0
+  private http: HttpClient = inject(HttpClient)
 
   get page() {
     return this.start
@@ -49,7 +47,7 @@ export class AllComponent {
 
   set page(value: number) {
     this.start = value
-    this.visiteurs = getPage(this.http, "/visiteurs",new HttpParams()
+    this.visiteurs = getPage(this.http, "/visiteurs", new HttpParams()
       .append('_limit', this.limit)
       .append('_start', this.start))
   }

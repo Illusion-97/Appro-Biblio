@@ -18,10 +18,10 @@ export class PaginationComponent {
   //page 3 (2 + 1), start 4 (2 + limit)
 
   get pages() {
-    return new Array(Math.floor(this.total / this.limit)).fill(0).map((value, index) => {
+    return new Array(Math.ceil(this.total / this.limit)).fill(0).map((value, index) => {
       return {
-        number : index + 1,
-        start : index * this.limit
+        number: index + 1,
+        start: index * this.limit
       }
     });
   }

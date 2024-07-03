@@ -15,6 +15,8 @@ import {Router} from "@angular/router";
 export class LoginComponent {
   email: string = ""
   password: string = ""
+  protected service: AuthService = inject(AuthService)
+  private router: Router = inject(Router)
 
   get credentials(): Credentials {
     return {
@@ -28,19 +30,15 @@ export class LoginComponent {
     this.password = value.password
   }
 
-
-  protected service: AuthService = inject(AuthService)
-  private router: Router = inject(Router)
+  get jsonValue() {
+    return JSON.stringify(this.credentials)
+  }
 
   login(form: HTMLFormElement) {
-    if(form.checkValidity())
+    if (form.checkValidity())
       this.service.login(this.credentials).subscribe(response => {
         this.router.navigate(['/home'])
       })
-  }
-
-  get jsonValue() {
-    return JSON.stringify(this.credentials)
   }
 }
 

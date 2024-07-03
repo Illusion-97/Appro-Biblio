@@ -11,13 +11,14 @@ import {RouterLink} from "@angular/router";
   styleUrl: './table.component.css'
 })
 export class TableComponent<T> {
-  @Input({required: true}) datas! : T[]
-  @Input({required: true}) displayers! : Displayer<T>[]
-  @Input() actions? : Action<T>[]
+  @Input({required: true}) datas!: T[]
+  @Input({required: true}) displayers!: Displayer<T>[]
+  @Input() actions?: Action<T>[]
 
   protected get displayers$() {
     return this.displayers.map(({display}) => display)
   }
+
   protected get headers() {
     return this.displayers.map(({header}) => header)
   }
@@ -28,6 +29,7 @@ export interface Displayer<T> {
   header: string
   display: (value: T) => any
 }
+
 export interface Action<T> {
   name: string
   show?: (value: T) => boolean

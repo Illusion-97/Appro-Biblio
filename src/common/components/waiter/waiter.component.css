@@ -1,0 +1,21 @@
+:host {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.run {
+  animation: myAnim 1s 0s infinite normal forwards;
+}
+
+@keyframes myAnim {
+  0% {
+    transform: translateX(-100vw) scaleX(100%);
+  }
+  50% {
+    transform: scaleX(200%);
+  }
+  100% {
+    transform: translateX(100vw) scaleX(100%);
+  }
+}

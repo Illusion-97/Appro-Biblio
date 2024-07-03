@@ -4,7 +4,7 @@
     <tr>
       @for (header of headers; track $index) {
         <th scope="col" class="px-6 py-3">
-          {{header}}
+          {{ header }}
         </th>
       }
       @if (actions?.length) {
@@ -15,22 +15,26 @@
     </tr>
     </thead>
     <tbody>
-      @for(data of datas; track $index){
-        <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-          @for(displayer of displayers$; track $index) {
+      @for (data of datas; track $index) {
+        <tr
+          class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+          @for (displayer of displayers$; track $index) {
             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-              {{displayer(data)}}
+              {{ displayer(data) }}
             </th>
           }
           @if (actions?.length) {
             <td class="px-6 py-4">
               <div class="flex justify-center gap-3">
                 @for (action of actions; track $index) {
-                  @if(!action.show || action.show(data)) {
+                  @if (!action.show || action.show(data)) {
                     @if (action.method) {
-                      <button (click)="action.method(data)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{action.name}}</button>
-                    } @else if(action.link) {
-                      <a [routerLink]="action.link(data)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{action.name}}</a>
+                      <button (click)="action.method(data)"
+                              class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{ action.name }}
+                      </button>
+                    } @else if (action.link) {
+                      <a [routerLink]="action.link(data)"
+                         class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{ action.name }}</a>
                     }
                   }
                 }

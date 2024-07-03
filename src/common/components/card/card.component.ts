@@ -12,6 +12,6 @@ import {RouterLink} from "@angular/router";
 })
 export class CardComponent {
 
-  @Input({required: true}) titre! : string;
-  @Input({required: true}) text! : string;
+  @Input({required: true}) titre!: string;
+  @Input({required: true}) text!: string;
 }

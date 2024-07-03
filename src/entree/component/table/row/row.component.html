@@ -1,22 +1,22 @@
 <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-    {{ visiteur?.nom }} {{visiteur?.prenom}}
+  <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
+    {{ visiteur?.nom }} {{ visiteur?.prenom }}
   </th>
-  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+  <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
     {{ badge?.numero }}
   </th>
-  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+  <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
     {{ raison?.libelle }}
   </th>
-  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+  <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
     {{ entree.arrivee | date:"short" }}
   </th>
-  <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+  <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
     {{ entree.sortie | date:"short" }}
   </th>
   <td class="px-6 py-4">
     <div class="flex justify-center gap-3">
-      <a routerLink="editor/{{entree.id}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+      <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" routerLink="editor/{{entree.id}}">Edit</a>
     </div>
   </td>
 </tr>
