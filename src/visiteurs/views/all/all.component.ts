@@ -35,7 +35,11 @@ export class AllComponent {
     {
       name: "Edit",
       link: value => 'editor/' + value.id
-    }
+    },
+    {
+      name: "Détail",
+      link: value => 'detail/' + value.id
+    }    
   ]
   limit: number = 2
   start: number = 0

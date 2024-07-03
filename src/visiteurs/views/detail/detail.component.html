@@ -1,0 +1,12 @@
+<div class="h-full w-full flex justify-center items-center">
+  <div class="block w-8/12 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+      <div class="mb-5">
+        <p class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="nom">Nom : {{visiteur.nom}} </p>
+      </div>
+      <div class="mb-5">
+        <p class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="nom">Prénom : {{visiteur.prenom}} </p>
+      </div>
+  </div>
+  <app-table [datas]="entrees" [displayers]="displayers" [actions]="actions" />
+</div>
+

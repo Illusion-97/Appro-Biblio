@@ -11,6 +11,12 @@
       "password": "$2a$10$hf.V3T7acB4DgRgRYQRW7.bCKesejGnB1HXvaNezHnTWiu8/ig4ia",
       "id": 2,
       "username": "ADEKALOM Yanis"
+    },
+    {
+      "email": "jszenb@gmail.com",
+      "password": "$2a$10$oRv59CGw6pvLmW8PzTzRTO9FX.ND1kyHuBzCUsrNj2bUhqX1mcQU6",
+      "id": 3,
+      "username": "Jérôme"
     }
   ],
   "articles": [
@@ -119,11 +125,6 @@
   "entrees": [
     {
       "id": 1,
-      "visiteur": {
-        "id": 1,
-        "nom": "Chiavassa",
-        "prenom": "Jérôme"
-      },
       "badge": {
         "id": 1,
         "numero": "123456"
@@ -133,7 +134,7 @@
         "libelle": "Archives"
       },
       "arrivee": "2024-07-01T15:23:02.734Z",
-      "sortie": null
+      "sortie": "2024-07-03T08:27:11.921Z"
     },
     {
       "id": 2,

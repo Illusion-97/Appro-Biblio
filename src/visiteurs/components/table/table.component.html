@@ -8,18 +8,6 @@
       <th class="px-6 py-3" scope="col">
         Prénom
       </th>
-      <th class="px-6 py-3" scope="col">
-        Badge
-      </th>
-      <th class="px-6 py-3" scope="col">
-        Arrivée
-      </th>
-      <th class="px-6 py-3" scope="col">
-        Départ
-      </th>
-      <th class="px-6 py-3" scope="col">
-        Raison
-      </th>
       <th class="px-6 py-3 text-center" scope="col">
         Action
       </th>
@@ -35,22 +23,10 @@
           <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
             {{ visiteur.prenom }}
           </td>
-          <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-            {{ visiteur.badge }}
-          </td>
-          <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-            {{ visiteur.arrivee }}
-          </td>
-          <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-            {{ visiteur.depart }}
-          </td>
-          <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-            {{ visiteur.raison }}
-          </td>
           <td class="px-6 py-4">
             <div class="flex justify-center">
-              <a routerLink="editor/{{visiteur.id}}"
-                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+              <a routerLink="detail/{{visiteur.id}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Détail</a>
+              <a routerLink="editor/{{visiteur.id}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
             </div>
           </td>
         </tr>
