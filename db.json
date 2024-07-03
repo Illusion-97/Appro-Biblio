@@ -164,11 +164,6 @@
     },
     {
       "id": 4,
-      "visiteur": {
-        "id": 6,
-        "nom": "ADEKALOM",
-        "prenom": "Patrick"
-      },
       "badge": {
         "id": 2,
         "numero": "740"
@@ -178,7 +173,7 @@
         "libelle": "Archives"
       },
       "arrivee": "2024-07-02T07:57:23.030Z",
-      "sortie": null
+      "sortie": "2024-07-03T10:12:30.873Z"
     },
     {
       "id": 5,
@@ -197,6 +192,55 @@
       },
       "arrivee": "2024-07-02T14:07:35.413Z",
       "sortie": null
+    },
+    {
+      "id": 6,
+      "visiteur": {
+        "id": 6,
+        "nom": "ADEKALOM",
+        "prenom": "Patrick"
+      },
+      "badge": {
+        "id": 2,
+        "numero": "740"
+      },
+      "raison": {
+        "id": 1,
+        "libelle": "Archives Test"
+      },
+      "arrivee": "2024-07-02T07:57:23.030Z",
+      "sortie": null
+    },
+    {
+      "id": 7,
+      "visiteur": {
+        "id": 6,
+        "nom": "ADEKALOM",
+        "prenom": "Patrick"
+      },
+      "badge": {
+        "id": 2,
+        "numero": "740"
+      },
+      "raison": {
+        "id": 1,
+        "libelle": "Visiteur"
+      },
+      "arrivee": "2024-07-02T07:57:23.030Z",
+      "sortie": null
+    },
+    {
+      "id": 8,
+      "badge": {
+        "id": 2,
+        "numero": "740"
+      },
+      "raison": {
+        "id": 1,
+        "libelle": "Archives"
+      },
+      "arrivee": "2024-07-02T07:57:23.030Z",
+      "sortie": "2024-07-03T10:15:54.749Z"
     }
   ]
 }

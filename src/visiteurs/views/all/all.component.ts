@@ -6,7 +6,7 @@ import {AsyncPipe} from "@angular/common";
 import {Action, Displayer, TableComponent} from "../../../common/components/table/table.component";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {PaginationComponent} from "../../../common/components/pagination/pagination.component";
-import {getPage, Page} from "../../../common/tools/http.tools";
+import {getPage, Page} from "ngx-jcs-common";
 
 @Component({
   selector: 'app-all',
@@ -39,7 +39,7 @@ export class AllComponent {
     {
       name: "Détail",
       link: value => 'detail/' + value.id
-    }    
+    }
   ]
   limit: number = 2
   start: number = 0

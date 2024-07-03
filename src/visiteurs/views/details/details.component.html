@@ -1,0 +1,9 @@
+<div class="w-full h-full flex justify-center items-center">
+  <app-card text="Entrées" [titre]="username">
+    <div class="flex flex-col gap-10">
+      @if(entrees | async; as result) {
+        <app-table [datas]="result" [displayers]="displayers" [actions]="actions" [(start)]="page" [limit]="limit"/>
+      }
+    </div>
+  </app-card>
+</div>

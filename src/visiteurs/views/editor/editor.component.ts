@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {AbstractFormComponent} from "../../../common/components/abstract-form-component";
+import {AbstractFormComponent} from "ngx-jcs-common";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {catchError, map, Observable, throwError} from "rxjs";

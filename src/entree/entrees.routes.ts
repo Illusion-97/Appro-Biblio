@@ -2,7 +2,7 @@ import {ActivatedRouteSnapshot, Router, Routes} from "@angular/router";
 import {inject} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {catchError, of} from "rxjs";
-import {getPage} from "../common/tools/http.tools";
+import {getPage} from "ngx-jcs-common";
 
 export const routes: Routes = [
   {

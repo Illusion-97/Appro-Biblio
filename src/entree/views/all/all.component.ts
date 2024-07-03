@@ -8,7 +8,7 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {PaginationComponent} from "../../../common/components/pagination/pagination.component";
-import {getPage, Page} from "../../../common/tools/http.tools";
+import {getPage, Page} from "ngx-jcs-common";
 
 @Component({
   selector: 'app-all',
