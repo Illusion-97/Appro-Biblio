@@ -20,11 +20,12 @@ import {CardComponent} from "../../common/components/card/card.component";
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit, AfterViewInit, AfterContentInit, AfterViewChecked, AfterContentChecked, OnDestroy, OnChanges{
+export class HomeComponent /*implements OnInit, AfterViewInit, AfterContentInit, AfterViewChecked, AfterContentChecked, OnDestroy, OnChanges */{
 
   @ViewChildren(CardComponent)
   cards?: QueryList<CardComponent>
 
+/*
   ngAfterContentChecked(): void {
     alert("Content Checked")
     console.log(this.cards)
@@ -64,4 +65,5 @@ export class HomeComponent implements OnInit, AfterViewInit, AfterContentInit, A
     alert("constuction")
     console.log(this.cards)
   }
+*/
 }
