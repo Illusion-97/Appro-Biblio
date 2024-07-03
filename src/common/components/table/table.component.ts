@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {NgTemplateOutlet} from "@angular/common";
 import {PaginationComponent} from "../pagination/pagination.component";
-import {getPage, Page} from "ngx-jcs-common";
+import {Page} from "ngx-jcs-common";
 
 @Component({
   selector: 'app-table',

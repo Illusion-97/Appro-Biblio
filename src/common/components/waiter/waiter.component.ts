@@ -17,9 +17,8 @@ import {
   styleUrl: './waiter.component.css'
 })
 export class WaiterComponent {
-  protected service = inject(PendingService)
-
   navigating: boolean = false
+  protected service = inject(PendingService)
 
   constructor(router: Router) {
     // Surveillance de evenements de routage dans l'application

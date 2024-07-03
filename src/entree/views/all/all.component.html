@@ -3,19 +3,24 @@
     <div class="w-full flex justify-between pb-5 px-10">
       <div>
         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="visiteur">Visiteur</label>
-        <input (ngModelChange)="getFiltered()" [(ngModel)]="visiteur" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="visiteur"
+        <input (ngModelChange)="getFiltered()" [(ngModel)]="visiteur"
+               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               id="visiteur"
                placeholder="John"
                required type="text"/>
       </div>
       <div>
         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="badge">Badge</label>
-        <input (ngModelChange)="getFiltered()" [(ngModel)]="badge" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="badge"
+        <input (ngModelChange)="getFiltered()" [(ngModel)]="badge"
+               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               id="badge"
                placeholder="John"
                required type="text"/>
       </div>
       <div>
         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="sortie">Sortie</label>
-        <select (ngModelChange)="getFiltered()" [(ngModel)]="sortie" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        <select (ngModelChange)="getFiltered()" [(ngModel)]="sortie"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 id="sortie">
           <option [ngValue]="undefined">Tous</option>
           <option [ngValue]="false">En utilisation</option>

@@ -4,7 +4,9 @@
     <form (submit)="onSubmit()" [formGroup]="form" class="w-full mx-auto">
       <div class="mb-5">
         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="visiteur">Visiteur</label>
-        <select [compareWith]="comparator" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" formControlName="visiteur"
+        <select [compareWith]="comparator"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                formControlName="visiteur"
                 id="visiteur">
           @for (visiteur of visiteurs | async; track $index) {
             <option [ngValue]="visiteur">{{ visiteur.nom | uppercase }} {{ visiteur.prenom | titlecase }}</option>
@@ -17,7 +19,9 @@
         <div class="w-6/12 px-1">
           <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="badge">Numéro de
             badge</label>
-          <select [compareWith]="comparator" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" formControlName="badge"
+          <select [compareWith]="comparator"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  formControlName="badge"
                   id="badge">
             @for (badge of badges | async; track $index) {
               <option [ngValue]="badge">{{ badge.numero }}</option>
@@ -27,7 +31,9 @@
         <div class="w-6/12 px-1">
           <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="raison">Raison de la
             visite</label>
-          <select [compareWith]="comparator" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" formControlName="raison"
+          <select [compareWith]="comparator"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  formControlName="raison"
                   id="raison">
             @for (raison of raisons | async; track $index) {
               <option [ngValue]="raison">{{ raison.libelle }}</option>
@@ -50,8 +56,9 @@
                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
         </div>
       }
-      <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              type="submit">
+      <button
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        type="submit">
         Submit
       </button>
     </form>

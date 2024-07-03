@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 
 @Injectable({
@@ -7,9 +7,10 @@ import {BehaviorSubject} from "rxjs";
 export class PendingService {
 
   pending: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
+
   constructor() {
     this.pending.subscribe(value => {
-      if(value) document.body.classList.add('pending')
+      if (value) document.body.classList.add('pending')
       else document.body.classList.remove('pending')
     })
   }

@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {first, map, Observable, switchMap} from "rxjs";
 import {Visiteur} from "../../models/visiteur";
@@ -24,15 +24,6 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 export class DetailsComponent {
   entrees: Observable<Page<Entree>>
   visiteur!: Visiteur
-
-  get username() {
-    return `${this.visiteur.nom.toUpperCase()} ${new TitleCasePipe().transform(this.visiteur.prenom)}`
-  }
-
-  constructor(route: ActivatedRoute, private http: HttpClient) {
-    route.data.pipe(takeUntilDestroyed()).subscribe(({visiteur}) => this.visiteur = visiteur)
-    this.entrees = route.data.pipe(map(({entrees}) => entrees))
-  }
   actions: Action<Entree>[] = [
     {
       name: "Edit",
@@ -46,10 +37,12 @@ export class DetailsComponent {
         value.visiteur = undefined
         this.entrees = this.http.put<Entree>("/entrees/" + value.id, value).pipe(
           first(),
-          switchMap( () => entreeByVisiteurId(this.http, this.visiteur.id)) )
+          switchMap(() => entreeByVisiteurId(this.http, this.visiteur.id)))
       }
     }
   ]
+  limit: number = 2
+  start: number = 0
   private datePipe = new DatePipe("en-US")
   displayers: Displayer<Entree>[] = [
     {
@@ -67,8 +60,14 @@ export class DetailsComponent {
     },
   ]
 
-  limit: number = 2
-  start: number = 0
+  constructor(route: ActivatedRoute, private http: HttpClient) {
+    route.data.pipe(takeUntilDestroyed()).subscribe(({visiteur}) => this.visiteur = visiteur)
+    this.entrees = route.data.pipe(map(({entrees}) => entrees))
+  }
+
+  get username() {
+    return `${this.visiteur.nom.toUpperCase()} ${new TitleCasePipe().transform(this.visiteur.prenom)}`
+  }
 
   get page() {
     return this.start

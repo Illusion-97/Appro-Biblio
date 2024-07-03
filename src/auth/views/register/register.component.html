@@ -1,32 +1,36 @@
 <div class="h-full flex items-center justify-center">
-  <form class="w-1/3 border p-5 rounded-2xl shadow-2xl dark:shadow-gray-600 bg-white dark:bg-gray-900" (submit)="onSubmit()" [formGroup]="form">
+  <form (submit)="onSubmit()"
+        [formGroup]="form" class="w-1/3 border p-5 rounded-2xl shadow-2xl dark:shadow-gray-600 bg-white dark:bg-gray-900">
     <div class="mb-5 pb-5 border-b">
       <h1 class="text-5xl text-center text-gray-900 dark:text-gray-300">Inscription</h1>
     </div>
     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Nom :
-      <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-             [class.invalid]="isInvalid('username')" type="text" name="titre" formControlName="username">
-      @if (hasError('username','required')) {
+      <input
+        [class.invalid]="isInvalid('username')"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" formControlName="username" name="titre" type="text">
+      @if (hasError('username', 'required')) {
         <p>Le username d'utilisateur est requis</p>
       }
     </label>
     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Email :
-      <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-             [class.invalid]="isInvalid('email')"  type="text" name="email"  formControlName="email">
-      @if (hasError('email','required')) {
+      <input
+        [class.invalid]="isInvalid('email')"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" formControlName="email" name="email" type="text">
+      @if (hasError('email', 'required')) {
         <p>Le mail est requis</p>
       }
-      @if (hasError('email','email')) {
+      @if (hasError('email', 'email')) {
         <p>Le format ne corresponds pas</p>
       }
     </label>
     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Password :
-      <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-             [class.invalid]="isInvalid('password')"  type="password" name="src" formControlName="password">
-      @if (hasError('password','required')) {
+      <input
+        [class.invalid]="isInvalid('password')"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" formControlName="password" name="src" type="password">
+      @if (hasError('password', 'required')) {
         <p>Le mot de passe est requis</p>
       }
-      @if (hasError('password','minlength')) {
+      @if (hasError('password', 'minlength')) {
         <p>Le mot de passe doit avoir minimum 8 caractères</p>
       }
       @if (confirmPassword.hasError('mustmatch')) {
@@ -34,8 +38,10 @@
       }
     </label>
     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Confirm Password :
-      <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-             [class.invalid]="confirmPassword.touched && confirmPassword.invalid" type="text" name="text" [formControl]="confirmPassword">
+      <input
+        [class.invalid]="confirmPassword.touched && confirmPassword.invalid"
+        [formControl]="confirmPassword" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="text"
+        type="text">
       @if (confirmPassword.touched && confirmPassword.hasError('required')) {
         <p>La confirmation est requise</p>
       }
@@ -44,8 +50,9 @@
       }
     </label>
     <div class="border-t mt-5 pt-5 flex justify-center">
-      <input class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-             type="submit" value="Enregistrer" [disabled]="form.pristine || form.invalid">
+      <input
+        [disabled]="form.pristine || form.invalid"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="submit" value="Enregistrer">
     </div>
   </form>
 </div>
